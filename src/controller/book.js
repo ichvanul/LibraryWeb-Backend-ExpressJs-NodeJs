@@ -8,15 +8,14 @@ module.exports = {
         const search = req.query.search;
         const sort = req.query.sortdesc;
         const sortasc = req.query.sortasc;
-        !page
-        ? bookModel.getData(search, sort, sortasc)
+        if (!page) {bookModel.getData(search, sort, sortasc)
             .then((result)=> {
                 MiscHelper.response(res,result, 200)
             })
             .catch(err => {
                 MiscHelper.response(res, {}, 400, err)
             })
-        : connection.query("SELECT COUNT(*) as total FROM `book` ", (err, result)=> {
+        } else {connection.query("SELECT COUNT(*) as total FROM `book` ", (err, result)=> {
             const total = result[0].total;
             if(page > 0 ) {
                 bookModel.getPage(page, total)
@@ -28,6 +27,7 @@ module.exports = {
                 })
             }
         })
+        }
     },
 
     bookDetail: (req, res) => {
