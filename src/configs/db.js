@@ -1,9 +1,10 @@
+require('dotenv').config();
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'library'
+  database : 'library',
 });
  
 connection.connect((err) => {

@@ -49,7 +49,7 @@ module.exports = {
         if(!err){
           const thisPage = Math.ceil(totalPage);
             if(page <= thisPage){
-              resolve([`Total Page: ${thisPage}`, `Current Page: ${page}`,result])}
+              resolve([`Total Page: ${thisPage}`, `Total Book: ${total}`, `Current Page: ${page}`,result])}
             } else {
               reject(new Error(err))
             }
@@ -71,7 +71,7 @@ module.exports = {
 
   bookDetail: (id) => {
     return new Promise((resolve, reject) => {
-      connection.query("SELECT * FROM `book` INNER JOIN category ON book.category = category.id WHERE title = ?", id, (err, result)=> {
+      connection.query("SELECT * FROM `book` INNER JOIN `category` ON book.category = category.id WHERE id_book = ?", id, (err, result)=> {
         if (!err) {
           resolve(result)
         } else {
@@ -83,7 +83,7 @@ module.exports = {
 
   updateBook: (id_book, data) => {
     return new Promise((resolve, reject) => {
-      connection.query("UPDATE book SET ? WHERE id= ?", [data, id_book], (err, result) => {
+      connection.query("UPDATE `book` SET ? WHERE id_book = ?", [data, id_book], (err, result) => {
         if (!err) {
           resolve(result)
         } else {
@@ -95,7 +95,7 @@ module.exports = {
 
   deleteBook: (id) => {
     return new Promise((resolve, reject) => {
-      connection.query("DELETE FROM book WHERE id = ?", id, (err, result) => {
+      connection.query("DELETE FROM book WHERE id_book = ?", id, (err, result) => {
         if (!err) {
           resolve(result)
         } else {

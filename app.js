@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 const express = require ('express');
 const app = express();
 const port = 8000;
@@ -9,6 +9,7 @@ const cors = require('cors');
 
 app.use(logger('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use('/uploads', express.static('./uploads'));
 app.use(bodyParser.json())
 app.use(cors())
 

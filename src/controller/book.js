@@ -1,6 +1,9 @@
+require('dotenv').config();
 const bookModel = require('../models/book')
 const MiscHelper = require('../helpers/helpers')
 const connection = require('../configs/db')
+const redis = require('redis');
+const client = redis.createClient(process);
 
 module.exports = {
     getData: (req,res)=> {
@@ -8,15 +11,14 @@ module.exports = {
         const search = req.query.search;
         const sort = req.query.sortdesc;
         const sortasc = req.query.sortasc;
-        !page
-        ? bookModel.getData(search, sort, sortasc)
+        if (!page) {bookModel.getData(search, sort, sortasc)
             .then((result)=> {
-                MiscHelper.response(res,result, 200)
+                  MiscHelper.response(res,result, 200)
             })
             .catch(err => {
                 MiscHelper.response(res, {}, 400, err)
             })
-        : connection.query("SELECT COUNT(*) as total FROM `book` ", (err, result)=> {
+        } else {connection.query("SELECT COUNT(*) as total FROM `book` ", (err, result)=> {
             const total = result[0].total;
             if(page > 0 ) {
                 bookModel.getPage(page, total)
@@ -27,7 +29,9 @@ module.exports = {
                     MiscHelper.response(res, {}, res.status,err)
                 })
             }
+        
         })
+        }
     },
 
     bookDetail: (req, res) => {
@@ -40,14 +44,15 @@ module.exports = {
     },
 
     insertBook: (req, res) => {
-        const {title, description, status, author, image, category} = req.body 
+        const {title, author, category, description} = req.body 
         const data = {
             title,
-            description,
-            status,
+            image: `http://localhost:8000/uploads/${req.file.filename}`,
             author,
-            image,
             category,
+            description,
+            status: 1,
+            
         }
         bookModel.insertBook(data)
         .then((result) => {

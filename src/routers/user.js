@@ -2,10 +2,12 @@ const express = require('express');
 const Router = express.Router();
 const userController = require('../controller/user');
 
-Router.post('/register', userController.register)
-Router.post('/login', userController.login)
+
 Router.get('/', userController.getUsers)
 Router.get('/:id_user', userController.userDetail)
+// Router.post('/activated', userController.activatedUser)
+Router.post('/register', userController.register)
+Router.post('/login', userController.login)
 Router.delete('/:id_user', userController.deleteUser)
 Router.patch('/edit/:id_user', userController.editUser)
 // Router.get('/admin', (req, res) => res.send('ini admin'))

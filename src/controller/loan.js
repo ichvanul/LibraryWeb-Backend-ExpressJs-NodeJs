@@ -1,4 +1,4 @@
-const bookModel = require('../models/loan')
+const loanModel = require('../models/loan')
 const MiscHelper = require('../helpers/helpers')
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
 
     loanDetail: (req, res) => {
         const idLoan = req.params.id_loan
-        bookModel.loanDetail(idLoan)
+        loanModel.loanDetail(idLoan)
         .then((result) => {
             MiscHelper.response(res, result, 200);
         })
@@ -20,12 +20,11 @@ module.exports = {
     },
 
     insertLoan: (req, res) => {
-        const {id_user, username, address, title} = req.body 
+        const {id_user, id_book, status} = req.body 
         const data = {
             id_user,
-            username,
-            address,
-            title
+            id_book,
+            status
         }
         loanModel.insertLoan(data)
         .then((result) => {
@@ -33,14 +32,14 @@ module.exports = {
         })
         .catch(err => console.log(err));
     },
+
     updateLoan: (req, res) => {
         const idLoan = req.params.id_loan
-        const {id_user, username, address, title} = req.body;
+        const {id_user, id_book, status} = req.body;
         const data = {
             id_user,
-            username,
-            address,
-            title
+            id_book,
+            status,
         }
         loanModel.updateLoan(idLoan, data)
         .then((result) => {
@@ -48,6 +47,7 @@ module.exports = {
           })
         .catch(err => console.log(err));
     },
+
     deleteLoan: (req, res) => {
         const idLoan = req.params.id_loan
         loanModel.deleteLoan(idLoan)
