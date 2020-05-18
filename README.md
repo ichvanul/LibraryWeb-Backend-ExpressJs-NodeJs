@@ -1,3 +1,22 @@
+<h1 align="center">
+Library Backend RESTFulAPI
+<br>
+</h1>
+
+<p align="center">
+<img src="https://img.shields.io/badge/Node.js-v12.14.1-blue">
+<img src="https://img.shields.io/badge/Express.js-v4.17.1-brightgreen">
+<img src="https://img.shields.io/badge/Bcrypt-v4.0.1-red"
+</p>
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [How To Install](#how-to-install)
+- [List of Endpoints](#list-of-endpoints)
+- [Related Project](#related-project)
+- [Contact](#contact)
+
 ## Introduction
 
 Library-RESTfulAPI is a Library systems with restful api. The main features are:
@@ -15,92 +34,166 @@ The Library-RESTfulAPI is written in Node Js with Express framework, it uses MyS
 
 ## How to Install
 
-- Please make sure that you have : node.js installed ([https://nodejs.org/](https://nodejs.org/))
-- Download or clone this file and then config & import MySQL database.
-- You can use [POSTMAN](https://www.getpostman.com/) or anything else for simulate.
+1. Clone this repository
 
-## API Versioning
+   ```
+   $ git clone https://github.com/ichvanul/LibraryWeb-Backend-ExpressJs-NodeJs.git
+   ```
 
-The first part of the URI path specifies the API version you wish to access in the format `v{version_number}`.
+2. Create a database and import file to database sql.
 
-For example, version 1 of the API (most current) is accessible via:
+3. Install all depedencies on the package.json
 
-```
-https://localhost:1000/api/v1/
-```
+   ```
+   $ npm install
+   ```
+
+4. Create `.env` file with environment variable in line with following:
+
+   ```
+   SERVER_PORT = 1000
+   DB_HOST = "localhost"
+   DB_USER = "your-user"
+   DB_PASS = "your-password"
+   DB_NAME = "your-database"
+   PRIVATE_KEY = "your-private-key"
+   URL = "http://localhost:1000/"
+   ```
+
+5. Run
+   ```
+   $ npm start
+   ```
 
 ## List of Endpoints
 
 **USERS**
 
-- [GET] /api/v1/users
+**[GET]** /api/v1/users
+
   Get all users
 
-- [GET] /api/v1/users/:id_user
+- **[GET]** /api/v1/users/:id_user
+
   Get user detail
 
-- [PATCH] /api/v1/users/:id_user
+- **[PATCH]** /api/v1/users/:id_user
+
   Update user data
 
-- [DELETE] /v1/users/:id_user
+- **[DELETE]** /v1/users/:id_user
+
   Delete user
 
-- [POST] /api/v1/users/register
-  Register user
+- **[POST]** /api/v1/users/register
 
-- [POST] /api/v1/users/login {email, password}
+  Register
+
+  **Sample Data**
+
+  ```
+  name: your-name
+  email: your-email
+  password: your-password
+  ```
+
+- **[POST]** /api/v1/users/login
+
   Login user
 
-- [POST] /api/v1/users/logout
+  **Sample Data**
+
+  ```
+  email: your-email
+  password: your-password
+  ```
+
+- **[POST]** /api/v1/users/logout
+
   Logout user
 
 **CATEGORY**
 
-- [GET] /api/v1/category
-  Get all categories
+- **[GET]** /api/v1/category
 
-- [GET] /api/v1/category/:id_category
+  Get all category
+
+- **[GET]** /api/v1/category/:id_category
+
   Get category detail
 
-- [PATCH] /api/v1/category/:id_category {name}
+- **[PATCH]** /api/v1/category/:id_category
+
   Update category data
 
-- [DELETE] /v1/category/:id_category
+  **Sample Data**
+
+  ```
+  name: your-name-category
+  ```
+
+- **[DELETE]** /v1/category/:id_category
+
   Delete category
 
-- [POST] /api/v1/category {name}
+- **[POST]** /api/v1/category
+
   Insert category
+
+  **Sample Data**
+
+  ```
+  name: your-name-category
+  ```
 
 **BOOK**
 
-- [GET] /api/v1/book
+- **[GET]** /api/v1/book
+
   Get all book
 
-- [GET] /api/v1/book/:id_book
+- **[GET]** /api/v1/book/:id_book
+
   Get book detail
 
-- [PATCH] /api/v1/book/:id_book
+- **[PATCH]** /api/v1/book/:id_book
+
   Update book data
 
-- [DELETE] /v1/book/:id_book
+- **[DELETE]** /v1/book/:id_book
+
   Delete book
 
-- [POST] /api/v1/book
+- **[POST]** /api/v1/book
+
   Insert book
 
 **LOAN**
 
-- [GET] /api/v1/loan
+- **[GET]** /api/v1/loan
+
   Get all loan
 
-- [GET] /api/v1/loan/:id_loan
+- **[GET]** /api/v1/loan/:id_loan
+
   Get loan detail
 
-- [PATCH] /api/v1/loan/:id_loan
+- **[PATCH]** /api/v1/loan/:id_loan
+
   Update loan data
 
-- [DELETE] /v1/loan/:id_loan
+- **[DELETE]** /v1/loan/:id_loan
+
   Delete loan
 
-- [POST] /api/v1/loan
+- **[POST]** /api/v1/loan
+
   Insert loan
+
+## Related Project
+
+- [`LibraryWeb-Frontend-VueJs`](https://github.com/ichvanul/LibraryWeb-VueJs.git)
+
+## Contact
+
+If you want to contact me you can reach me at <ichvanulyp@gmail.com>.
