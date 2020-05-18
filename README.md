@@ -69,7 +69,7 @@ The Library-RESTfulAPI is written in Node Js with Express framework, it uses MyS
 
 **USERS**
 
-**[GET]** /api/v1/users
+- **[GET]** /api/v1/users
 
   Get all users
 
