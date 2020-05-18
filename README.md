@@ -1,3 +1,9 @@
+<p align="center">
+<a href="https://nodejs.org/">
+  <img src="https://cdn-images-1.medium.com/max/871/1*d2zLEjERsrs1Rzk_95QU9A.png">
+</a>
+</p>
+
 <h1 align="center">
 Library Backend RESTFulAPI
 <br>
@@ -51,13 +57,13 @@ The Library-RESTfulAPI is written in Node Js with Express framework, it uses MyS
 4. Create `.env` file with environment variable in line with following:
 
    ```
-   SERVER_PORT = 1000
+   SERVER_PORT = 1000 (example)
    DB_HOST = "localhost"
    DB_USER = "your-user"
    DB_PASS = "your-password"
    DB_NAME = "your-database"
    PRIVATE_KEY = "your-private-key"
-   URL = "http://localhost:1000/"
+   URL = "http://localhost:1000/" (example)
    ```
 
 5. Run
